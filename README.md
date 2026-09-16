@@ -26,21 +26,21 @@ Jalankan langsung melalui terminal tanpa perlu mengunduh repositori terlebih dah
 #### Windows (Buka PowerShell sebagai Administrator)
 - **Menu Utama (Hub)**:
   ```powershell
-  irm https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/start.ps1 | iex
+  irm https://raw.githubusercontent.com/IrfanArsyad/winstart/main/start.ps1 | iex
   ```
 - **Pasang Tailscale Auto-Start Langsung (Otomatis)**:
   ```powershell
-  irm https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/windows/tailscale-autostart.ps1 | iex
+  irm https://raw.githubusercontent.com/IrfanArsyad/winstart/main/windows/tailscale-autostart.ps1 | iex
   ```
 
 #### Linux (Terminal dengan Sudo / Root)
 - **Menu Utama (Hub)**:
   ```bash
-  curl -fsSL https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/start.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/IrfanArsyad/winstart/main/start.sh | bash
   ```
 - **Pasang Tailscale Auto-Start Langsung (Otomatis)**:
   ```bash
-  curl -fsSL https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/linux/tailscale-autostart.sh | bash -s -- --auto
+  curl -fsSL https://raw.githubusercontent.com/IrfanArsyad/winstart/main/linux/tailscale-autostart.sh | bash -s -- --auto
   ```
 
 ---
@@ -50,7 +50,7 @@ Jalankan langsung melalui terminal tanpa perlu mengunduh repositori terlebih dah
 Unduh repositori dan jalankan script secara lokal:
 
 ```bash
-git clone https://github.com/USERNAME/REPOSITORY.git winstart
+git clone https://github.com/IrfanArsyad/winstart.git
 cd winstart
 ```
 
