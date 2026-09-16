@@ -7,7 +7,7 @@ function Test-IsAdmin {
     return $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
-$scriptDir = $PSScriptRoot
+$baseUrl = "https://raw.githubusercontent.com/IrfanArsyad/winstart/main"
 
 while ($true) {
     Clear-Host
@@ -28,12 +28,15 @@ while ($true) {
 
     switch ($choice) {
         "1" {
-            $path = Join-Path $scriptDir "windows\tailscale-autostart.ps1"
-            if (Test-Path $path) {
-                & $path
+            $localPath = $null
+            if ($PSScriptRoot) {
+                $localPath = Join-Path $PSScriptRoot "windows\tailscale-autostart.ps1"
+            }
+            if ($localPath -and (Test-Path $localPath)) {
+                & $localPath
             } else {
-                Write-Host "[!] File script '$path' tidak ditemukan." -ForegroundColor Red
-                Start-Sleep -Seconds 2
+                Write-Host "`n[i] Mengunduh & menjalankan modul Tailscale secara remote..." -ForegroundColor Cyan
+                irm "$baseUrl/windows/tailscale-autostart.ps1" | iex
             }
         }
         "0" {

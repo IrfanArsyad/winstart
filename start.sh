@@ -2,7 +2,8 @@
 # WinStart - Main Interactive Menu Hub (Linux)
 # Run as root or with sudo
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" 2>/dev/null && pwd )"
+BASE_URL="https://raw.githubusercontent.com/IrfanArsyad/winstart/main"
 
 while true; do
     clear
@@ -17,7 +18,12 @@ while true; do
 
     case $choice in
         1)
-            bash "$SCRIPT_DIR/linux/tailscale-autostart.sh"
+            if [ -n "$SCRIPT_DIR" ] && [ -f "$SCRIPT_DIR/linux/tailscale-autostart.sh" ]; then
+                bash "$SCRIPT_DIR/linux/tailscale-autostart.sh"
+            else
+                echo -e "\033[36m[i] Mengunduh & menjalankan modul Tailscale secara remote...\033[0m"
+                curl -fsSL "$BASE_URL/linux/tailscale-autostart.sh" | bash
+            fi
             ;;
         0)
             echo -e "\nSampai jumpa!"
